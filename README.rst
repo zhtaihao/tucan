@@ -12,13 +12,8 @@ the required dependencies:
 
 .. code:: bash
 
-    apt-get install python-mechanize python-lxml python-pip
+    apt-get install python-mechanize python-lxml
 
-Then install tucan CLI via pip:
-
-.. code:: bash
-
-    pip install git+git://github.com/fhirschmann/tucan.git
 
 Setup
 `````
@@ -40,13 +35,13 @@ Run
 
 .. code:: bash
 
-    tucan
+    python tucan.py
 
 to print all grades in the current semester:
 
 .. code:: bash
 
-    tucan -n
+    python tucan.py -n
 
 to print only new grades.
 
@@ -63,28 +58,20 @@ And add this in order to check every 60 minutes:
 
 .. code:: bash
 
-    */60 * * * * /usr/local/bin/tucan -m me@email.com
-
-This utility can also send notifications on Linux systems:
-
-.. code:: bash
-
-    */60 * * * * DISPLAY=":0" /usr/local/bin/tucan -n
+    */60 * * * * /usr/bin/python PATH_TO_REPO_FOLDER/tucan.py -m me@email.com
 
 Help
 ````
 
 .. code:: text
 
-    usage: tucan [-h] [--mail MAIL] [--db DB] [--new] [--notify] [--json]
+    usage: python tucan.py [-h] [--mail MAIL] [--db DB] [--new] [--json]
 
-    TUCaN CLI
+    TUCaN script
 
     optional arguments:
       -h, --help            show this help message and exit
       --mail MAIL, -m MAIL  send email to this address on changes (default: None)
-      --db DB               database file (default: /home/fabian/.tucandb)
+      --db DB               database file (default: %HOME_DIR%/.tucandb)
       --new                 print only new grades (default: False)
-      --notify, -n          send desktop notification on new grades (default:
-                            False)
       --json, -j            output json (default: False)
