@@ -17,7 +17,7 @@ def mail(recipient, subject, body):
 
     proc = subprocess.Popen(["mail", "-s", subject, recipient],
                             stdin=subprocess.PIPE)
-    proc.stdin.write(body)
+    proc.stdin.write(body.encode('utf-8'))
     proc.stdin.close()
 
 def send_telegram_bot_notification():
